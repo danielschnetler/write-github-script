@@ -3,7 +3,7 @@ name: Learning GitHub Script
 on:
   issues:
     types: [opened]
-    
+
 jobs:
   comment:
     runs-on: ubuntu-latest
@@ -17,4 +17,9 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: "🎉 You've created this issue comment using GitHub Script!!!" 
+            })
+            github.projects.createCard({
+              column_id: 10078437,
+              content_id: context.payload.issue.id,
+              content_type: "Issue"
             })
